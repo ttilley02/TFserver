@@ -35,10 +35,6 @@ describe("Secured Endpoints", function() {
         name: "GET /api/things/:thing_id/reviews",
         path: "/api/things/1/reviews"
       },
-      {
-        name: "POST /",
-        path: "/api"
-      }
     ];
 
     protectedEndpoints.forEach(endpoint => {

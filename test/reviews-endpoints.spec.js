@@ -45,6 +45,7 @@ describe('Reviews Endpoints', function() {
       }
       return supertest(app)
         .post('/api/reviews')
+        .set("Authorization", helpers.makeAuthHeader(testUser))
         .send(newReview)
         .expect(201)
         .expect(res => {
@@ -85,7 +86,7 @@ describe('Reviews Endpoints', function() {
         text: 'Test new review',
         rating: 3,
         user_id: testUser.id,
-        thing_id: testThing.id,
+        thing_id: testThing.id,g_id: testThing.id,
       }
 
       it(`responds with 400 and an error message when the '${field}' is missing`, () => {
@@ -93,6 +94,7 @@ describe('Reviews Endpoints', function() {
 
         return supertest(app)
           .post('/api/reviews')
+          .set("Authorization", helpers.makeAuthHeader(testUser))
           .send(newReview)
           .expect(400, {
             error: `Missing '${field}' in request body`,
